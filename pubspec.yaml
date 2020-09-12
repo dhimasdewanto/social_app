@@ -18,7 +18,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.8.4 <3.0.0"
+  sdk: ">=2.9.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,38 +28,38 @@ dependencies:
   dartz: ^0.9.1
 
   # Firebase Service.
-  firebase_auth: ^0.16.1
-  firebase_core: ^0.4.5
-  google_sign_in: ^4.5.1
+  firebase_auth: ^0.18.0+1
+  firebase_core: ^0.5.0
+  google_sign_in: ^4.5.3
 
   # Flutter package that helps implement the BLoC pattern.
-  flutter_bloc: ^6.0.1
+  flutter_bloc: ^6.0.5
 
   # Annotation for package freezed.
-  freezed_annotation: ^0.11.0
+  freezed_annotation: ^0.11.0+1
 
   # This is a simple Service Locator for Dart and Flutter projects.
   get_it: ^4.0.4
 
   # Injectable is a convenient code generator for get_it.
-  injectable: ^1.0.2
+  injectable: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   # Auto route generator.
-  auto_route_generator: ^0.6.7
+  auto_route_generator: ^0.6.8
 
   # A build system for Dart code generation and modular compilation.
   build_runner: ^1.10.1
 
   # Another code generator for unions/pattern-matching/copy.
   # Also has sealed class generator.
-  freezed: ^0.11.4
+  freezed: ^0.11.6
 
   # Generator of injectable.
-  injectable_generator: ^1.0.3
+  injectable_generator: ^1.0.4
 
   # Is a hand-picked, open-source, community-driven collection of lint rules for Dart and Flutter projects.
   # This package can be used as a replacement for pedantic for those who prefer stricter rules.

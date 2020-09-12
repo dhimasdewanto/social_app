@@ -19,7 +19,7 @@ class SocialPage extends StatelessWidget {
         slivers: [
           SliverAppBar(
             floating: true,
-            expandedHeight: 150.0,
+            expandedHeight: 150,
             backgroundColor: Colors.black,
             actions: [
               FlatButton.icon(

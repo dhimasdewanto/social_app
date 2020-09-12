@@ -43,7 +43,7 @@ class SignInGoogle extends UseCase<Unit, Unit, AuthFailures> {
 
     final googleAuth = await googleUser.authentication;
 
-    final credential = GoogleAuthProvider.getCredential(
+    final credential = GoogleAuthProvider.credential(
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );

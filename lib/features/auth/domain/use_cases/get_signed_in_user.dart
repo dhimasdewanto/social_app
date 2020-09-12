@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -16,20 +15,15 @@ class GetSignedInUser extends UseCase<User, Unit, AuthFailures> {
     @required this.googleSignIn,
   });
 
-  final FirebaseAuth firebaseAuth;
+  final firebase_auth.FirebaseAuth firebaseAuth;
+
+  // TODO(dhimasdewanto): Why need this???
   final GoogleSignIn googleSignIn;
 
+  // TODO(dhimasdewanto): Lot changes. Check if it works.
   @override
   Future<Either<AuthFailures, User>> execute(Unit params) async {
-    FirebaseUser userFirebase;
-
-    try {
-      userFirebase = await firebaseAuth.currentUser();
-    } on PlatformException catch (_) {
-      return left(const AuthFailures.serverFailure());
-    } catch (_) {
-      return left(const AuthFailures.unexpected());
-    }
+    final userFirebase = firebaseAuth.currentUser;
 
     if (userFirebase == null) {
       return left(const AuthFailures.unauthorized());

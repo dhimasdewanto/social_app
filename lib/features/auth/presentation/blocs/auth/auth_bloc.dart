@@ -42,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (user) async* {
             final res = await getSignedInUser(unit);
             yield res.fold(
-              (failures) => _mapFailures(failures),
+              _mapFailures,
               (user) => AuthState.loggedIn(user: user),
             );
           },
@@ -52,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       checkIsLoggedIn: () async* {
         final res = await getSignedInUser(unit);
         yield res.fold(
-          (failures) => _mapFailures(failures),
+          _mapFailures,
           (user) => AuthState.loggedIn(user: user),
         );
       },
