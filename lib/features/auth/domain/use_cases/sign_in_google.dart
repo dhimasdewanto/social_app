@@ -35,7 +35,16 @@ class SignInGoogle extends UseCase<Unit, Unit, AuthFailures> {
   }
 
   Future<Either<AuthFailures, Unit>> _tryToSignInGoogle(Unit params) async {
-    final googleUser = await googleSignIn.signIn();
+    GoogleSignInAccount  googleUser;
+
+    try {
+      googleUser = await googleSignIn.signIn();
+    } on PlatformException catch(e) {
+      print("Check SHA1 / SHA256 is registered");
+      print(e);
+      return left(const AuthFailures.serverFailure());
+    }
+    
 
     if (googleUser == null) {
       return left(const AuthFailures.cancelledByUser());

@@ -26,12 +26,12 @@ GetIt $initGetIt(
   final gh = GetItHelper(get, environment, environmentFilter);
   final registerModules = _$RegisterModules();
   gh.lazySingleton<FirebaseAuth>(() => registerModules.firebaseAuth);
+  gh.lazySingleton<GetSignedInUser>(
+      () => GetSignedInUser(firebaseAuth: get<FirebaseAuth>()));
   gh.lazySingleton<GoogleSignIn>(() => registerModules.googleSignIn);
   gh.lazySingleton<SignInGoogle>(() => SignInGoogle(
       firebaseAuth: get<FirebaseAuth>(), googleSignIn: get<GoogleSignIn>()));
   gh.lazySingleton<SignOut>(() => SignOut(
-      firebaseAuth: get<FirebaseAuth>(), googleSignIn: get<GoogleSignIn>()));
-  gh.lazySingleton<GetSignedInUser>(() => GetSignedInUser(
       firebaseAuth: get<FirebaseAuth>(), googleSignIn: get<GoogleSignIn>()));
   gh.factory<AuthBloc>(() => AuthBloc(
         getSignedInUser: get<GetSignedInUser>(),
